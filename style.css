@@ -1,0 +1,61 @@
+body {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+    background-image: url("football.webp");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    background-attachment: fixed;
+
+    color: white;
+
+    display: flex;
+
+    justify-content: center;
+
+    padding: 40px;
+
+    min-height: 100vh;
+}
+
+.container {
+    width: 80%;
+    background: rgba(255,255,255,0.08);
+    padding: 30px;
+    border-radius: 20px;
+}
+h2 {
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    color: black;
+    border: 10px solid yellow;
+}
+th {
+    background: #1a73e8;
+    color: white;
+    padding: 12px;
+    text-align: center;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+}
+
+tr:hover {
+    background: #dae53a;
+}
+
+.winner {
+    background: #90ee90 !important;
+    font-weight: bold;
+}
