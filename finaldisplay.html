@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-
     <title>League Simulation</title>
     <link rel="stylesheet" href="style.css">
-
 </head>
+
 <body>
+
     <div class="container">
         <h2>🏆 Final League Standings</h2>
         <table border="1" class="dataframe">
@@ -14,31 +14,103 @@
     <tr style="text-align: right;">
       <th>Rank</th>
       <th>Team</th>
+      <th>Matches Played</th>
+      <th>W</th>
+      <th>D</th>
+      <th>L</th>
       <th>Points</th>
       <th>GoalsFor</th>
       <th>GoalsAgainst</th>
-      <th>GoalDifferencce</th>
+      <th>GoalDifference</th>
     </tr>
   </thead>
   <tbody>
     <tr class="winner">
       <td>1</td>
-      <td>bjkb</td>
-      <td>4</td>
-      <td>1</td>
+      <td>psg</td>
+      <td>2</td>
+      <td>2</td>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
+      <td>6</td>
+      <td>5</td>
+      <td>0</td>
+      <td>5</td>
     </tr>
     <tr>
       <td>2</td>
-      <td>jvjvj</td>
-      <td>1</td>
+      <td>arsenal</td>
+      <td>2</td>
       <td>0</td>
-      <td>1</td>
-      <td>-1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+      <td>5</td>
     </tr>
   </tbody>
 </table>
     </div>
+
+    <br><br>
+
+    <div class="container">
+        <h2>⭐ Best Performers Awards</h2>
+        <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Award</th>
+      <th>Winner</th>
+      <th>Stat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>🏆 Top Team</td>
+      <td>psg</td>
+      <td>6 pts</td>
+    </tr>
+    <tr>
+      <td>⚡ Best Attack</td>
+      <td>psg</td>
+      <td>5 goals</td>
+    </tr>
+    <tr>
+      <td>🛡 Best Defence</td>
+      <td>psg</td>
+      <td>0 conceded</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+    <br><br>
+
+    <div class="container">
+        <h2>📊 Win / Loss Probability</h2>
+        <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Team</th>
+      <th>Win Probability %</th>
+      <th>Loss Probability %</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>psg</td>
+      <td>51.0</td>
+      <td>49.0</td>
+    </tr>
+    <tr>
+      <td>arsenal</td>
+      <td>18.5</td>
+      <td>81.5</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
 </body>
 </html>
