@@ -148,10 +148,16 @@ num=int(input("Enter number of Teams:"))
 details=[]
 
 for i in range(num):
-    name=input("Enter Team name:")
-    offrate=float(input("Enter offense rate of the Team : "))
-    defrate=float(input("Enter the Defense rate of the Team : "))
-    details.append(Team_data(name,offrate,defrate))
+    try:   
+        name=input("Enter Team name:")
+        offrate=float(input("Enter offense rate of the Team  (0.5-5.0): "))
+        defrate=float(input("Enter the Defense rate of the Team  (0.5-5.0): "))
+        details.append(Team_data(name,offrate,defrate))
+        if(not(0.5 <= offrate <= 5.0 and 0.5 <= defrate <= 5.0)):
+            raise ValueError
+    except(ValueError):
+        print("Enter only values between 0.5-5.0")
+        break 
 obj=League_simulation(details)    
 obj.run_simulation()
 
