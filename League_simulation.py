@@ -144,20 +144,33 @@ class League_simulation:
                 a.win_probability += round(wins / trials * 100, 1)
 
 print("Ready to Simulate League?")
-num=int(input("Enter number of Teams:")) 
+num=int(input("Enter number of Teams:"))
+
+# Constraint: need at least 2 teams for a league
+if num < 2:
+    print("A league requires at least 2 teams. Exiting.")
+    exit()
+
 details=[]
+entered_names=[]
 
 for i in range(num):
-    try:   
+    try:
         name=input("Enter Team name:")
+        # Constraint: no duplicate team names allowed
+        if name in entered_names:
+            print(f"Team '{name}' has already been entered. All team names must be unique. Exiting.")
+            exit()
         offrate=float(input("Enter offense rate of the Team  (0.5-5.0): "))
         defrate=float(input("Enter the Defense rate of the Team  (0.5-5.0): "))
-        details.append(Team_data(name,offrate,defrate))
         if(not(0.5 <= offrate <= 5.0 and 0.5 <= defrate <= 5.0)):
             raise ValueError
+        details.append(Team_data(name,offrate,defrate))
+        entered_names.append(name)
     except(ValueError):
         print("Enter only values between 0.5-5.0")
-        break 
+        break
+
 obj=League_simulation(details)    
 obj.run_simulation()
 
@@ -198,4 +211,3 @@ webbrowser.open(
 5, total matches played"""
 
 """ Changes in CSS and HTML + Display logic list usuage at result = []"""
-
