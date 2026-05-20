@@ -129,8 +129,17 @@ class League_simulation:
         mc_df = pd.DataFrame(mc_data).sort_values("Win Probability %", ascending=False)
         return mc_df.to_html(index=False)
 
-    
     def run_monte_carlo(self, trials=5000):
+        total_points = sum(team.points for team in self.teamdetails)
+        for team in self.teamdetails:
+            if total_points == 0:
+                team.win_probability = 0
+            else:
+                team.win_probability = round(
+                (team.points / total_points) * 100,
+                1
+                )
+    """def run_monte_carlo(self, trials=5000):
         for a in self.teamdetails:
             for b in self.teamdetails:
                 if a == b:
@@ -141,23 +150,36 @@ class League_simulation:
                     gb = np.random.poisson(max(0.1, b.tar / a.tdr))
                     if ga > gb:
                         wins += 1
-                a.win_probability += round(wins / trials * 100, 1)
+                a.win_probability += round(wins / trials * 100, 1)"""
 
 print("Ready to Simulate League?")
-num=int(input("Enter number of Teams:")) 
+num=int(input("Enter number of Teams:"))
+
+# Constraint: need at least 2 teams for a league
+if num < 2:
+    print("A league requires at least 2 teams. Exiting.")
+    exit()
+
 details=[]
+entered_names=[]
 
 for i in range(num):
-    try:   
+    try:
         name=input("Enter Team name:")
+        # Constraint: no duplicate team names allowed
+        if name in entered_names:
+            print(f"Team '{name}' has already been entered. All team names must be unique. Exiting.")
+            exit()
         offrate=float(input("Enter offense rate of the Team  (0.5-5.0): "))
         defrate=float(input("Enter the Defense rate of the Team  (0.5-5.0): "))
-        details.append(Team_data(name,offrate,defrate))
         if(not(0.5 <= offrate <= 5.0 and 0.5 <= defrate <= 5.0)):
             raise ValueError
+        details.append(Team_data(name,offrate,defrate))
+        entered_names.append(name)
     except(ValueError):
         print("Enter only values between 0.5-5.0")
-        break 
+        break
+
 obj=League_simulation(details)    
 obj.run_simulation()
 
@@ -198,4 +220,3 @@ webbrowser.open(
 5, total matches played"""
 
 """ Changes in CSS and HTML + Display logic list usuage at result = []"""
-
